@@ -103,6 +103,10 @@ def decode_jwt():
                 'nbf': data['nbf'] }
     return jsonify(**response)
 
+@APP.route('/test', methods=['GET'])
+def test_method():
+    return jsonify("New Endpoint")
+
 
 def _get_jwt(user_data):
     exp_time = datetime.datetime.utcnow() + datetime.timedelta(weeks=2)
