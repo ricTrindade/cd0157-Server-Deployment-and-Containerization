@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-flask-deployment
+  name: new-test-d
   labels:
-    app: simple-flask
+    app: new_test
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: simple-flask
+      app: newtest
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -17,15 +17,14 @@ spec:
   template:
     metadata:
       labels:
-        app: simple-flask
+        app: newtest
     spec:
       containers:
-      - name: simple-flask
-        # image: IMAGE_TAG
-        image: rictrindade/simple-flask
-        securityContext:
-          privileged: false
-          readOnlyRootFilesystem: false
-          allowPrivilegeEscalation: false
-        ports:
-          - containerPort: 8080
+        - name: newtest
+          image: docker.io/rictrindade/simple-flask:latest
+          securityContext:
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 8080
